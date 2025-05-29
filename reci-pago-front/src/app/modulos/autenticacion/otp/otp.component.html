@@ -1,0 +1,13 @@
+<!-- otp.component.html -->
+<form [formGroup]="formOtp" (ngSubmit)="validarOtp()">
+  <mat-form-field appearance="fill" class="full-width">
+    <mat-label>Ingresa el código OTP</mat-label>
+    <input matInput formControlName="otp" />
+    <mat-error *ngIf="formOtp.get('otp')?.invalid">OTP válido es requerido</mat-error>
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" type="submit" [disabled]="formOtp.invalid">Validar OTP</button>
+
+  <p class="error" *ngIf="mensajeError">{{ mensajeError }}</p>
+  <p class="exito" *ngIf="mensajeExito">{{ mensajeExito }}</p>
+</form>

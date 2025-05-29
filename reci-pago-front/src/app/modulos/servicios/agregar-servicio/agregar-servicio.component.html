@@ -1,0 +1,21 @@
+<!-- agregar-servicio.component.html -->
+<form [formGroup]="formServicio" (ngSubmit)="agregarServicio()" enctype="multipart/form-data">
+  <mat-form-field appearance="fill" class="full-width">
+    <mat-label>ID Usuario</mat-label>
+    <input matInput formControlName="userId" type="number" />
+    <mat-error *ngIf="formServicio.get('userId')?.invalid">ID de usuario es requerido</mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" class="full-width">
+    <mat-label>Número de contrato</mat-label>
+    <input matInput formControlName="contractNumber" />
+    <mat-error *ngIf="formServicio.get('contractNumber')?.invalid">Número de contrato es requerido</mat-error>
+  </mat-form-field>
+
+  <input type="file" (change)="onFileSelected($event)" accept="application/pdf" />
+
+  <button mat-raised-button color="primary" type="submit" [disabled]="formServicio.invalid || !archivoPdf">Agregar Servicio</button>
+
+  <p class="error" *ngIf="mensajeError">{{ mensajeError }}</p>
+  <p class="exito" *ngIf="mensajeExito">{{ mensajeExito }}</p>
+</form>

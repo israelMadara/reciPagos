@@ -1,0 +1,15 @@
+<!-- generar-codigo.component.html -->
+<mat-form-field appearance="fill" class="full-width">
+  <mat-label>ID Servicio</mat-label>
+  <input matInput type="number" [(ngModel)]="servicioId" />
+</mat-form-field>
+
+<button mat-raised-button color="primary" (click)="generarCodigo()">Generar Código Oxxo</button>
+
+<div *ngIf="codigoBarras">
+  <h3>Código de barras:</h3>
+  <p>{{ codigoBarras }}</p>
+</div>
+
+<p class="error" *ngIf="mensajeError">{{ mensajeError }}</p>
+<p class="exito" *ngIf="mensajeExito">{{ mensajeExito }}</p>

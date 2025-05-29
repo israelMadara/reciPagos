@@ -1,0 +1,18 @@
+<!-- historial-pagos.component.html -->
+<mat-form-field appearance="fill" class="full-width">
+  <mat-label>ID Servicio</mat-label>
+  <input matInput type="number" [(ngModel)]="servicioId" />
+</mat-form-field>
+
+<button mat-raised-button color="primary" (click)="obtenerHistorial()">Ver Historial de Pagos</button>
+
+<mat-list *ngIf="pagos.length > 0">
+  <h3>Historial de pagos</h3>
+  <mat-list-item *ngFor="let pago of pagos">
+    <p>Fecha: {{ pago.fecha | date }}</p>
+    <p>Monto: {{ pago.monto }}</p>
+    <p>Estado: {{ pago.estado }}</p>
+  </mat-list-item>
+</mat-list>
+
+<p class="error" *ngIf="mensajeError">{{ mensajeError }}</p>

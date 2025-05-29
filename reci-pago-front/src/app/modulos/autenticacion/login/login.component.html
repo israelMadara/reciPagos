@@ -1,0 +1,18 @@
+<!-- login.component.html -->
+<form [formGroup]="formLogin" (ngSubmit)="login()">
+  <mat-form-field appearance="fill" class="full-width">
+    <mat-label>Teléfono</mat-label>
+    <input matInput formControlName="telefono" />
+    <mat-error *ngIf="formLogin.get('telefono')?.invalid">Teléfono es requerido</mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" class="full-width">
+    <mat-label>Contraseña</mat-label>
+    <input matInput type="password" formControlName="contrasena" />
+    <mat-error *ngIf="formLogin.get('contrasena')?.invalid">Contraseña es requerida</mat-error>
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" type="submit" [disabled]="formLogin.invalid">Ingresar</button>
+
+  <p class="error" *ngIf="mensajeError">{{ mensajeError }}</p>
+</form>
